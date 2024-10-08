@@ -1,6 +1,6 @@
 # **Optimized Ensemble Learning for Classification of GST Data**  
-*Binary Classification of GST data with AI/ML Techniques  
-Team-ID = GSTN_715*
+*Binary Classification of GST data with AI/ML Techniques*  
+**Team-ID = GSTN_715**
 
 ## **Overview**  
 This project is based on the binary classification of GST data. The task was to develop AI/ML models to predict the target class using machine learning and deep learning techniques. We implemented an Ensemble Model using multiple classifiers to enhance performance on the given datasets.
@@ -22,37 +22,36 @@ This project is based on the binary classification of GST data. The task was to 
 - [References](#references)
 
 ## **Approach**  
-Explanation of our approach and the steps taken in model development.  
+Explanation of the approach and the steps taken in model development.  
 
 ### **Problem Definition**  
-We were tasked to perform classification on the provided dataset using AI/ML techniques. The already split dataset [training (60%) and testing (20%)] was given to us. Both train and test data contains two csv files one for inputs and other for labels.  
+The task is to perform classification on the provided dataset using AI/ML techniques. The already split dataset [training (60%) and testing (20%)] was given. Both train and test data contains two csv files, one for inputs and other for labels.  
 
 ### **Analyzing the Dataset**  
 We performed detailed analysis of the given dataset:
-- The Input dataset contains an 'ID' column along with 22 features named 'Column0' through 'Column21'.
-- The Target dataset contains an 'ID' column and the 'target' column specifying the true class of the samples (either 0 or 1).
-- Imbalanced data: There is an imbalance in the target label for both the train and test datasets. The majority class (0) outnumbers the minority class (1).
-- Some features contain a large proportion of missing (NA) values.
-- There are some features where most of the values are the same.
-- There are outliers in some of the features.
-- It is observed from the correlation matrix that very few columns are highly correlated and those which are highly correlated has categorical data so it is chosen to not omit any columns/variables.
-- Column18 is highly correlated with the output/target.  
+- **Input data**: Contains an 'ID' column along with 22 features named 'Column0' through 'Column21'.
+- **Target data**: Contains an 'ID' column and the 'target' column specifying the true class of the samples (either 0 or 1).
+- **Class Imbalance**: There is an imbalance in the target label for both the train and test datasets. The majority class (0) outnumbers the minority class (1).
+- **Missing Values**: Some features contain a large proportion of missing (NA) values.
+- **Homogeneous Features**: There are some features where most of the values are the same.
+- **Outliers**: There are outliers in some of the features.
+- **Correlations**: It is observed from the correlation matrix that very few columns are highly correlated and those which are highly correlated has categorical data so it is chosen to not omit any columns/variables. Column18 is highly correlated with the output/target.  
 
-- Distributations of Features in the Train Dataset:  
+- **Feature Distribution**: Distributations of Features in the Train Dataset  
     <img src="https://drive.google.com/thumbnail?id=1GOrKudIFHXCaNo-4pvqUNwC2HsfbLGFW&sz=w1017" alt="feature_distributation_train.png" width="700"/>  
 
-- Distributation of the Classes in the Train Dataset:  
+- **Class Distribution**: Distributation of the Classes in the Train Dataset:  
     <img src="https://drive.google.com/thumbnail?id=1QDMc_by-oF5KIb0UceQdLdQ7a4_ChFfq&sz=w567" alt="distributation_train_labels.png" width="400"/>  
 
-- Heatmap of Missing values in the Train Dataset:  
+- **Missing Values Heatmap**: Heatmap of Missing values in the Train Dataset:  
     <img src="https://drive.google.com/thumbnail?id=1CRVPgk4DkJEK2U4lLe9ngax0QS1XCMYy&sz=w857" alt="missing_data_train.png" width="500"/>  
 
-- Correlation Between Features and Target:  
+- **Correlation Matrix**: Correlation Between Features and Target:  
     <img src="https://drive.google.com/thumbnail?id=1sMabPZWKx4gmpgB6pGxWumrN235-cal8&sz=w1033" alt="correlation_matrix_train.png" width="600"/>  
 
 
 ### **Dataset Processing**  
-We came to find out that the below techniques are most suitable for this dataset by analysing the dataset in detail and making predictions using different preprocessing techniques with a basic random forest classifier.  
+We identified that the below techniques are most suitable for this dataset by analysing the dataset in detail and making predictions using different preprocessing techniques with a basic random forest classifier.  
 - **Outlier Handling**: We capped extreme values using Z-Score and Interquartile Range (IQR) analysis.  
 - **Feature Engineering**: For certain columns, new features were created to track whether a value is NA (for those columns who has most of the values as NA) or to track whether a value is the most frequent value (for those columns who has most of the values as the same value).  
 - **Scaling**: Categorical columns were scaled using min-max normalization, and continuous columns were normalized using Z-normalization (this is chosen because the outliers are taken care of beforehand).  
@@ -70,16 +69,19 @@ Several machine learning and deep learning approaches were evaluated:
 - **Anomaly Detection (Autoencoder)**: Train an autoencoder neural network on only class 1, then classify based on reconstruction error (so that class 1 samples will have low error while class 0 will have large error).  
 - **Deep Metric Learning (DML)**: Training a Siamese neural network to learn an n-dimensional embedding space using contrastive loss. Then using these projections for classification.  
 
-The models produced varying results, and the ensemble model yielded the best performance.
+The models produced varying results, and the ensemble model had the best performance.
 
 Note: If needed, the code of these models is also included in our project files (inside the "Model_Scripts" folder).
 
 ### **Final Solution**  
 *Final Model: Ensemble Model*  
-Our final solution was an ensemble of two models with a meta-model on top:  
-1. **Deep Neural Network**: First Model in our Ensemble model is the Deep Neural Network model specifically tuned to classify class 0 robustly, i.e. every example classified as class 0 truly belongs to class 0, but the same cannot be said for class 1. The overall performance of this model is very low.  
-2. **XGBoost Classifier**: Second Model in our Ensemble model is the XGB classifier trained to classify class 1 robustly, i.e. every example classified as class 1 truly belongs to class 1, but the same cannot be said for class 0. The overall performance of this model is very low.  
-3. **Meta Neural Network**: A neural network that takes input from these two models to make the final prediction. This model has high overall performance despite the poor performance of the individual models.
+Our final solution was an ensemble of two models with a meta-model on top. This solution combines the strength of multiple models and addresses the weaknesses of individual models. The model is structured as follows: 
+1. **XGBoost Classifier**: First Model in our Ensemble model is the XGB classifier trained to classify class 1 robustly, i.e. every example classified as class 1 highly likely belongs to class 1, but the same cannot be said for class 0. The overall performance of this model is very low.  
+2. **Deep Neural Network**: Second Model in our Ensemble model is the Deep Neural Network model specifically optimized to classify samples of class 0 robustly, i.e. every sample that this model predicts as class 0 is highly likely to be truly class 0, but the same cannot be said for class 1. The overall performance of this model is poor.  
+3. **Meta Neural Network**: A neural network that takes input from these two models as input features to make the final prediction. It learns how to combine other model's outputs to produce a more accurate final prediction. This model has high overall performance despite the poor performance of the individual models.  
+
+- **Architecture of Meta Model**  
+    <img src="https://drive.google.com/thumbnail?id=1i_YTkrGFbsO7WaYKMaKDs7_3Hlip078D&sz=w4524" alt="ensemble_model_architecture_diagram.png" width="700"/>  
 
 ## **Results**  
 
@@ -94,17 +96,21 @@ Our final solution was an ensemble of two models with a meta-model on top:
     - Binary Cross Entropy Loss  
 
 - **Comparing models**  
-    The comparison of results of different models on the Test Dataset:  
+    The comparison of performance of different models on the Test Dataset:  
     <img src="https://drive.google.com/thumbnail?id=1dXPuXIEqDakgT0AgGQf1N8lW4oFMfxhS&sz=w2497" alt="model_compare.png" width="800"/>  
     The table shows that the ensemble model is the best performing one considering all the metrics used.
 
-- **Ensemble Model Results**  
+- **Ensemble Model Performance**  
     The results of `Ensemble Model` (our best-performing model):  
-    - Results of Ensemble model on the Train vs Test Datasets  
+    - **Performance of Ensemble model on the Train vs Test Datasets**  
         <img src="https://drive.google.com/thumbnail?id=1hU4sztYClTHbAKVKxE3jMb5BLrSO7rYb&sz=w2004" alt="ensemble_model_train_test_results.png" width="350"/>  
-    - Results of Component Models inside the Ensemble model on the Test Dataset  
+        This shows that model is not overfitting.
+
+    - **Performance of Component Models inside the Ensemble model** on the Test Dataset  
         <img src="https://drive.google.com/thumbnail?id=12BC8I9wlZQeIbw4uzqeFPaDmhtEKyld5&sz=w2287" alt="ensemble_model_results.png" width="400"/>  
-    - Final Report of Ensemble Model on the Test Dataset  
+        Both Model 1 and Model 2 has low performance, but combined model has a high performance.  
+
+    - **Final Performance Report of Ensemble Model** on the Test Dataset  
         <img src="https://drive.google.com/thumbnail?id=16Y17BiD0nkOjtEbWr4yJbFV3qbye3DIV&sz=w2374" alt="ensemble_model_report.png" width="400"/>  
         <img src="https://drive.google.com/thumbnail?id=1Ec85vzbBU3NguWZPLFcdUG07m0MPI2NE&sz=w536" alt="ensemble_model_confusion_matrix.png" width="400"/>  
 
