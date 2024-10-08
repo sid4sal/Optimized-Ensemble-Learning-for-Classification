@@ -11,7 +11,7 @@ This project is based on the binary classification of GST data. The task was to 
     - [Analyzing the Dataset](#analyzing-the-dataset)  
     - [Dataset Processing](#dataset-processing)  
     - [Explored Solutions](#explored-solutions)  
-    - [Final Solution](#final-solution)  
+    - [Final Solution/Model](#final-solutionmodel)  
 2. [Results](#results)  
     - [Improvements/Future Scope](#improvementsfuture-scope)  
 3. [Code Documentation and Manual](#code-documentation-and-manual)  
@@ -35,25 +35,25 @@ We performed detailed analysis of the given dataset:
 - **Missing Values**: Some features contain a large proportion of missing (NA) values.
 - **Homogeneous Features**: There are some features where most of the values are the same.
 - **Outliers**: There are outliers in some of the features.
-- **Correlations**: It is observed from the correlation matrix that very few columns are highly correlated and those which are highly correlated has categorical data so it is chosen to not omit any columns/variables. Column18 is highly correlated with the output/target.  
+- **Correlations**: It is observed from the correlation matrix that very few columns are highly correlated and those which are highly correlated have categorical data so it is chosen to not omit any columns/variables. Column18 is highly correlated with the output/target.  
 
-- **Feature Distribution**: Distributations of Features in the Train Dataset  
-    <img src="https://drive.google.com/thumbnail?id=1GOrKudIFHXCaNo-4pvqUNwC2HsfbLGFW&sz=w1017" alt="feature_distributation_train.png" width="700"/>  
+- **Feature Distribution**: Distributions of Features in the Train Dataset  
+    <img src="https://drive.google.com/thumbnail?id=1GOrKudIFHXCaNo-4pvqUNwC2HsfbLGFW&sz=w1017" alt="feature_distribution_train.png" width="700"/>  
 
-- **Class Distribution**: Distributation of the Classes in the Train Dataset:  
-    <img src="https://drive.google.com/thumbnail?id=1QDMc_by-oF5KIb0UceQdLdQ7a4_ChFfq&sz=w567" alt="distributation_train_labels.png" width="400"/>  
+- **Class Distribution**: Distribution of the Classes in the Train Dataset  
+    <img src="https://drive.google.com/thumbnail?id=1QDMc_by-oF5KIb0UceQdLdQ7a4_ChFfq&sz=w567" alt="distribution_train_labels.png" width="400"/>  
 
-- **Missing Values Heatmap**: Heatmap of Missing values in the Train Dataset:  
+- **Missing Values Heatmap**: Heatmap of Missing values in the Train Dataset  
     <img src="https://drive.google.com/thumbnail?id=1CRVPgk4DkJEK2U4lLe9ngax0QS1XCMYy&sz=w857" alt="missing_data_train.png" width="500"/>  
 
-- **Correlation Matrix**: Correlation Between Features and Target:  
+- **Correlation Matrix**: Correlation Between Features and Target  
     <img src="https://drive.google.com/thumbnail?id=1sMabPZWKx4gmpgB6pGxWumrN235-cal8&sz=w1033" alt="correlation_matrix_train.png" width="600"/>  
 
 
 ### **Dataset Processing**  
-We identified that the below techniques are most suitable for this dataset by analysing the dataset in detail and making predictions using different preprocessing techniques with a basic random forest classifier.  
+We identified that the below techniques are most suitable for this dataset by analysing the dataset in detail and making predictions using different preprocessing techniques with a basic random forest classifier. We have implemented the following dataset preprocessing techniques in our model:  
 - **Outlier Handling**: We capped extreme values using Z-Score and Interquartile Range (IQR) analysis.  
-- **Feature Engineering**: For certain columns, new features were created to track whether a value is NA (for those columns who has most of the values as NA) or to track whether a value is the most frequent value (for those columns who has most of the values as the same value).  
+- **Feature Engineering**: For certain columns, new features were created to track whether a value is NA (for those columns who have most of the values as NA) or to track whether a value is the most frequent value (for those columns who have most of the values as the same value).  
 - **Scaling**: Categorical columns were scaled using min-max normalization, and continuous columns were normalized using Z-normalization (this is chosen because the outliers are taken care of beforehand).  
 - **Imputation**: NA values were handled with a Bayesian ridge regression imputation method. Other techniques like non-linear regression were explored but failed (didn't converge) due to significant missing data in some columns.
 
@@ -73,7 +73,7 @@ The models produced varying results, and the ensemble model had the best perform
 
 Note: If needed, the code of these models is also included in our project files (inside the "Model_Scripts" folder).
 
-### **Final Solution**  
+### **Final Solution/Model**  
 *Final Model: Ensemble Model*  
 Our final solution is an ensemble of two models with a meta-model on top. This solution combines the strength of multiple models and addresses the weaknesses of individual models. Our Ensemble model consists of 3 models: Model 1 (XGB Classifier), Model 2 (Deep Neural Network Model), and Meta Model (Neural Network). Both Model 1 and Model 2 makes predictions on the input, the output of both the models is then fed into the meta model to make final predictions. The model is structured as follows: 
 1. **XGBoost Classifier (Model 1)**: First Model in our Ensemble model is the XGB classifier trained to classify class 1 robustly, i.e. every example classified as class 1 highly likely belongs to class 1, but the same cannot be said for class 0. The overall performance of this model is very low.  
@@ -82,7 +82,7 @@ Our final solution is an ensemble of two models with a meta-model on top. This s
 
 - **Architecture of Ensemble Model**: Diagram of our final model.  
     <img src="https://drive.google.com/thumbnail?id=1i_YTkrGFbsO7WaYKMaKDs7_3Hlip078D&sz=w4524" alt="ensemble_model_architecture_diagram.png" width="700"/>  
-    First, Both the Model 1 and Model 2 are trained seperately using training dataset, then finally the Meta Model is trained on the training dataset.
+    First, Both the Model 1 and Model 2 are trained separately using the training dataset, then finally the Meta Model is trained on the training dataset.
 
 - **Training Logs of Meta Model**  
     <img src="https://drive.google.com/thumbnail?id=1EtVmx3ak_dI20MxViJvRgXRk4uVeaOlb&sz=w5032" alt="meta_model_train_graphs.png" width="700"/>  
@@ -239,13 +239,13 @@ Run the prediction script with the following command
     ```bash  
     python Final_Model_Predict_Script.py --test_data_input "dataset_original/Test_20/X_Test_Data_Input.csv" --save_folder "saves/save_final_ensemble_model/" --output_csv "predictions.csv" --true_labels "dataset_original/Test_20/Y_Test_Data_Target.csv"
     ```  
-    This makes the prediction and saves them in a csv file then compares them with the true labels to display the results.
+    This makes the prediction and saves them in a csv file then compares them with the true labels to display the performance/results.
 
 - Arguments to the script:
-    - --test_data_input = Path to the test dataset (CSV file)
-    - --save_folder = Path to the saved model folder (models and preprocessing config files).
-    - --output_csv = Path to save the predictions (CSV file).
-    - --true_labels = Optional path to the true labels (target labels) for evaluation (CSV file).  
+    - `--test_data_input` = Path to the test dataset (CSV file)
+    - `--save_folder` = Path to the saved model folder (models and preprocessing config files).
+    - `--output_csv` = Path to save the predictions (CSV file).
+    - `--true_labels` = Optional path to the true labels (target labels) for evaluation (CSV file).  
 
 For further details, see the comments within the script and notebooks.
 
