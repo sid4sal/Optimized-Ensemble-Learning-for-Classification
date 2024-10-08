@@ -3,7 +3,7 @@
 Team-ID = GSTN_715*
 
 ## **Overview**  
-This project focuses on binary classification of GST data. The task was to develop AI/ML models to predict the target class using machine learning and deep learning techniques. We implemented an Ensemble Model consisting of multiple classifiers to enhance performance on the given dataset.
+This project is based on the binary classification of GST data. The task was to develop AI/ML models to predict the target class using machine learning and deep learning techniques. We implemented an Ensemble Model using multiple classifiers to enhance performance on the given datasets.
 
 ### **Table of Contents**  
 1. [Approach](#approach)
@@ -44,8 +44,11 @@ We performed detailed analysis of the given dataset:
 - Distributation of the Classes in the Train Dataset:  
     <img src="https://drive.google.com/thumbnail?id=1QDMc_by-oF5KIb0UceQdLdQ7a4_ChFfq&sz=w567" alt="distributation_train_labels.png" width="400"/>  
 
+- Heatmap of Missing values in the Train Dataset:  
+    <img src="https://drive.google.com/thumbnail?id=1CRVPgk4DkJEK2U4lLe9ngax0QS1XCMYy&sz=w857" alt="missing_data_train.png" width="500"/>  
+
 - Correlation Between Features and Target:  
-    <img src="https://drive.google.com/thumbnail?id=1sMabPZWKx4gmpgB6pGxWumrN235-cal8&sz=w1033" alt="correlation_matrix_train.png" width="700"/>  
+    <img src="https://drive.google.com/thumbnail?id=1sMabPZWKx4gmpgB6pGxWumrN235-cal8&sz=w1033" alt="correlation_matrix_train.png" width="600"/>  
 
 
 ### **Dataset Processing**  
@@ -132,7 +135,7 @@ Follow the steps below to set up your environment:
 The project directory is structured as follows:  
 
 ```
-GSTN_715_Analytics_Hackathon_Code  
+Optimized-Ensemble-Learning-for-Classification  
 ├── dataset_original/  
 │   ├── Test_20/  
 │   └── Train_60/  
@@ -151,7 +154,7 @@ GSTN_715_Analytics_Hackathon_Code
 
 Below are the details of each folder in the project:
 ```
-GSTN_715_Analytics_Hackthon_Code
+Optimized-Ensemble-Learning-for-Classification
 ├── dataset_original
 │   ├── Test_20 (Place the Test input and labels here)
 │   └── Train_60 (Place the Train input and labels here)
