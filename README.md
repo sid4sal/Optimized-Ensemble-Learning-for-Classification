@@ -75,13 +75,14 @@ Note: If needed, the code of these models is also included in our project files 
 
 ### **Final Solution**  
 *Final Model: Ensemble Model*  
-Our final solution was an ensemble of two models with a meta-model on top. This solution combines the strength of multiple models and addresses the weaknesses of individual models. The model is structured as follows: 
+Our final solution is an ensemble of two models with a meta-model on top. This solution combines the strength of multiple models and addresses the weaknesses of individual models. Our Ensemble model consists of 3 models: Model 1 (XGB Classifier), Model 2 (Deep Neural Network Model), and Meta Model (Neural Network). Both Model 1 and Model 2 makes predictions on the input, the output of both the models is then fed into the meta model to make final predictions. The model is structured as follows: 
 1. **XGBoost Classifier (Model 1)**: First Model in our Ensemble model is the XGB classifier trained to classify class 1 robustly, i.e. every example classified as class 1 highly likely belongs to class 1, but the same cannot be said for class 0. The overall performance of this model is very low.  
 2. **Deep Neural Network (Model 2)**: Second Model in our Ensemble model is the Deep Neural Network model specifically optimized to classify samples of class 0 robustly, i.e. every sample that this model predicts as class 0 is highly likely to be truly class 0, but the same cannot be said for class 1. The overall performance of this model is poor.  
 3. **Meta Neural Network**: A neural network that takes input from these two models as input features to make the final prediction. It learns how to combine other model's outputs to produce a more accurate final prediction. This model has high overall performance despite the poor performance of the individual models.  
 
 - **Architecture of Ensemble Model**: Diagram of our final model.  
     <img src="https://drive.google.com/thumbnail?id=1i_YTkrGFbsO7WaYKMaKDs7_3Hlip078D&sz=w4524" alt="ensemble_model_architecture_diagram.png" width="700"/>  
+    First, Both the Model 1 and Model 2 are trained seperately using training dataset, then finally the Meta Model is trained on the training dataset.
 
 - **Training Logs of Meta Model**  
     <img src="https://drive.google.com/thumbnail?id=1EtVmx3ak_dI20MxViJvRgXRk4uVeaOlb&sz=w5032" alt="meta_model_train_graphs.png" width="700"/>  
