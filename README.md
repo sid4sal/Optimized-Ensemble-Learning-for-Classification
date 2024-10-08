@@ -1,4 +1,4 @@
-# **Optimized Ensemble Learning for Adaptive Classification of GST Data**  
+# **Optimized Ensemble Learning for Classification of GST Data**  
 *Binary Classification of GST data with AI/ML Techniques  
 Team-ID = GSTN_715*
 
@@ -36,7 +36,17 @@ We performed detailed analysis of the given dataset:
 - There are some features where most of the values are the same.
 - There are outliers in some of the features.
 - It is observed from the correlation matrix that very few columns are highly correlated and those which are highly correlated has categorical data so it is chosen to not omit any columns/variables.
-- Column18 is highly correlated with the output/target.
+- Column18 is highly correlated with the output/target.  
+
+- Distributations of Features in the Train Dataset:  
+    <img src="https://drive.google.com/thumbnail?id=1GOrKudIFHXCaNo-4pvqUNwC2HsfbLGFW&sz=w1017" alt="feature_distributation_train.png" width="700"/>  
+
+- Distributation of the Classes in the Train Dataset:  
+    <img src="https://drive.google.com/thumbnail?id=1QDMc_by-oF5KIb0UceQdLdQ7a4_ChFfq&sz=w567" alt="distributation_train_labels.png" width="400"/>  
+
+- Correlation Between Features and Target:  
+    <img src="https://drive.google.com/thumbnail?id=1sMabPZWKx4gmpgB6pGxWumrN235-cal8&sz=w1033" alt="correlation_matrix_train.png" width="700"/>  
+
 
 ### **Dataset Processing**  
 We came to find out that the below techniques are most suitable for this dataset by analysing the dataset in detail and making predictions using different preprocessing techniques with a basic random forest classifier.  
@@ -68,19 +78,42 @@ Our final solution was an ensemble of two models with a meta-model on top:
 2. **XGBoost Classifier**: Second Model in our Ensemble model is the XGB classifier trained to classify class 1 robustly, i.e. every example classified as class 1 truly belongs to class 1, but the same cannot be said for class 0. The overall performance of this model is very low.  
 3. **Meta Neural Network**: A neural network that takes input from these two models to make the final prediction. This model has high overall performance despite the poor performance of the individual models.
 
-## Results  
-The comparison of results of different models:  
-The results of our best-performing model are given below:  
+## **Results**  
 
-### Improvements/Future Scope  
+- **Metrics Used**  
+    For this task, we have used the following metrics to determine the performance of our models:
+    - Accuracy  
+    - Precision  
+    - Recall  
+    - F1 Score  
+    - AUC-ROC  
+    - Confusion Matrix  
+    - Binary Cross Entropy Loss  
+
+- **Comparing models**  
+    The comparison of results of different models on the Test Dataset:  
+    <img src="https://drive.google.com/thumbnail?id=1dXPuXIEqDakgT0AgGQf1N8lW4oFMfxhS&sz=w2497" alt="model_compare.png" width="800"/>  
+    The table shows that the ensemble model is the best performing one considering all the metrics used.
+
+- **Ensemble Model Results**  
+    The results of `Ensemble Model` (our best-performing model):  
+    - Results of Ensemble model on the Train vs Test Datasets  
+        <img src="https://drive.google.com/thumbnail?id=1hU4sztYClTHbAKVKxE3jMb5BLrSO7rYb&sz=w2004" alt="ensemble_model_train_test_results.png" width="350"/>  
+    - Results of Component Models inside the Ensemble model on the Test Dataset  
+        <img src="https://drive.google.com/thumbnail?id=12BC8I9wlZQeIbw4uzqeFPaDmhtEKyld5&sz=w2287" alt="ensemble_model_results.png" width="400"/>  
+    - Final Report of Ensemble Model on the Test Dataset  
+        <img src="https://drive.google.com/thumbnail?id=16Y17BiD0nkOjtEbWr4yJbFV3qbye3DIV&sz=w2374" alt="ensemble_model_report.png" width="400"/>  
+        <img src="https://drive.google.com/thumbnail?id=1Ec85vzbBU3NguWZPLFcdUG07m0MPI2NE&sz=w536" alt="ensemble_model_confusion_matrix.png" width="400"/>  
+
+### **Improvements/Future Scope**  
 Following are some of the ways which could improve the model in future:
 - Expand the ensemble with more diverse models (e.g., deep metric learning, anomaly detection models).  
 - Experiment with different loss functions like triplet loss in Siamese networks and log loss in neural networks for more control.  
 - Apply more advanced preprocessing techniques to enhance data quality.
 
-## Code Documentation and Manual
+## **Code Documentation and Manual**
 
-### Environment Setup  
+### **Environment Setup**  
 The project utilizes **Conda** for managing dependencies, because of the ease and flexibility. You can use any other environment manager, but install the proper versions of the required libraries.  
 
 Follow the steps below to set up your environment:  
@@ -95,7 +128,7 @@ Follow the steps below to set up your environment:
    ```  
    This will create and activate the required environment with all necessary dependencies.
 
-### Project Structure  
+### **Project Structure**  
 The project directory is structured as follows:  
 
 ```
@@ -142,7 +175,7 @@ GSTN_715_Analytics_Hackthon_Code
 
 **Note**: In the `Saves` folder each individual folder (named after the model) contains three folders: `tf_models`, `tf_logs` and `preprocessing_config`. In case you want to do more testing, after training the model, its respective files will be stored in the outside folders: `tf_models`, `tf_logs` and `preprocessing_config`. You need to make a new folder inside `Saves` folder and copy these folders there, then you can make the prediction on the new model. Predict the new saved model, by changing the save folder name in the `Final_Model_Predict.ipynb` notebook or passing the new save folder path argument in the predict script `Final_Model_Predict_Script.py`. By default you should use our pretrained final model save `"save_final_ensemble_model"`.  
 
-### Training the Model  
+### **Training the Model**  
 To recreate the training results, Model Training can be done using the `Final_Model_Train.ipynb` python notebook. This notebook will train the model on the given training dataset and give prediction results on the test dataset.  
 1. Activate the environment:  
    ```bash  
@@ -156,10 +189,10 @@ To recreate the training results, Model Training can be done using the `Final_Mo
 3. Before proceeding, you need to have the training and testing dataset files (`X_Train_Data_Input.csv`, `Y_Train_Data_Target.csv`, `X_Test_Data_Input.csv`, `Y_Test_Data_Target.csv`) inside the directory `dataset_original/Train_60` and `dataset_original/Test_20`. Or alternatively, you can change the paths in the notebook to your stored files.  
 4. Run the individual cells one by one (if needed, make changes according to your need) to train the model. The code in the notebook is well commented.  
 
-### Making Predictions  
+### **Making Predictions**  
 You can make predictions using our pretrained model in two ways:
 
-#### 1. Python Notebook  
+#### **1. Python Notebook**  
 - Run the `Final_Model_Predict.ipynb` notebook.  
     ```bash  
     # Activate the environment
@@ -175,7 +208,7 @@ You can make predictions using our pretrained model in two ways:
 - Run the individual cells one by one to make predictions. The code in the notebook is well commented.  
 - Optionally, You can also see the results of the predictions by providing the true labels in the `y_test_csv_path = 'dataset_original/Test_20/Y_Test_Data_Target.csv'`  
 
-#### 2. Python Script  
+#### **2. Python Script**  
 - Activate the environment and navigate/change directory into the project folder:
     ```bash
     conda activate your_env_name
@@ -202,7 +235,7 @@ Run the prediction script with the following command
 
 For further details, see the comments within the script and notebooks.
 
-## References  
+## **References**  
 1. G. E. Hinton, R. R. Salakhutdinov, Reducing the Dimensionality of Data with Neural Networks. Science 313, 504-507 (2006). DOI: 10.1126/science.1127647  
 
 2. H. He and E. A. Garcia, "Learning from Imbalanced Data," in IEEE Transactions on Knowledge and Data Engineering, vol. 21, no. 9, pp. 1263-1284, Sept. 2009, doi: 10.1109/TKDE.2008.239.  
