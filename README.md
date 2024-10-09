@@ -28,7 +28,7 @@ Explanation of the approach and the steps taken in model development.
 The task is to perform classification on the provided dataset using AI/ML techniques. The already split dataset [training (60%) and testing (20%)] was given. Both train and test data contains two csv files, one for inputs and other for labels.  
 
 ### **Analyzing the Dataset**  
-We performed detailed analysis of the given dataset:
+We performed detailed analysis of the given dataset (There are 785133 training examples and 261712 testing examples):
 - **Input data**: Contains an 'ID' column along with 22 features named 'Column0' through 'Column21'.
 - **Target data**: Contains an 'ID' column and the 'target' column specifying the true class of the samples (either 0 or 1).
 - **Class Imbalance**: There is an imbalance in the target label for both the train and test datasets. The majority class (0) outnumbers the minority class (1).
@@ -81,7 +81,7 @@ Our final solution is an ensemble of two models with a meta-model on top. This s
 3. **Meta Neural Network**: A neural network that takes input from these two models as input features to make the final prediction. It learns how to combine other model's outputs to produce a more accurate final prediction. This model has high overall performance despite the poor performance of the individual models.  
 
 - **Architecture of Ensemble Model**: Diagram of our final model.  
-    <img src="https://drive.google.com/thumbnail?id=1i_YTkrGFbsO7WaYKMaKDs7_3Hlip078D&sz=w4524" alt="ensemble_model_architecture_diagram.png" width="700"/>  
+    <img src="https://drive.google.com/thumbnail?id=1SfvRKzK0Q0IB1DctuLT7x3lAYWADA8mC&sz=w4524" alt="ensemble_model_architecture_diagram.png" width="700"/>  
     First, Both the Model 1 and Model 2 are trained separately using the training dataset, then finally the Meta Model is trained on the training dataset.
 
 - **Training Logs of Meta Model**  
