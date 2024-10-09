@@ -38,7 +38,7 @@ We performed detailed analysis of the given dataset:
 - **Correlations**: It is observed from the correlation matrix that very few columns are highly correlated and those which are highly correlated have categorical data so it is chosen to not omit any columns/variables. Column18 is highly correlated with the output/target.  
 
 - **Feature Distribution**: Distributions of Features in the Train Dataset  
-    <img src="https://drive.google.com/thumbnail?id=1GOrKudIFHXCaNo-4pvqUNwC2HsfbLGFW&sz=w1017" alt="feature_distribution_train.png" width="700"/>  
+    <img src="https://drive.google.com/thumbnail?id=1lhUbaALlQBsfsIq25eK9HJdnw-2JJrfj&sz=w1190" alt="feature_distribution_train.png" width="700"/>  
 
 - **Class Distribution**: Distribution of the Classes in the Train Dataset  
     <img src="https://drive.google.com/thumbnail?id=1QDMc_by-oF5KIb0UceQdLdQ7a4_ChFfq&sz=w567" alt="distribution_train_labels.png" width="400"/>  
