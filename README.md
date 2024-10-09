@@ -81,11 +81,11 @@ Our final solution is an ensemble of two models with a meta-model on top. This s
 3. **Meta Neural Network**: A neural network that takes input from these two models as input features to make the final prediction. It learns how to combine other model's outputs to produce a more accurate final prediction. This model has high overall performance despite the poor performance of the individual models.  
 
 - **Architecture of Ensemble Model**: Diagram of our final model.  
-    <img src="https://drive.google.com/thumbnail?id=1SfvRKzK0Q0IB1DctuLT7x3lAYWADA8mC&sz=w4524" alt="ensemble_model_architecture_diagram.png" width="700"/>  
+    <img src="https://drive.google.com/thumbnail?id=1gouX_dskthKwkrtjFa4YccO7IhGz3Hlm&sz=w4524" alt="ensemble_model_architecture_diagram.png" width="700"/>  
     First, Both the Model 1 and Model 2 are trained separately using the training dataset, then finally the Meta Model is trained on the training dataset.
 
 - **Training Logs of Meta Model**  
-    <img src="https://drive.google.com/thumbnail?id=1EtVmx3ak_dI20MxViJvRgXRk4uVeaOlb&sz=w5032" alt="meta_model_train_graphs.png" width="700"/>  
+    <img src="https://drive.google.com/thumbnail?id=1puKgG4U5EWFuu9dTi9goz7DvJdyYD9bw&sz=w5032" alt="meta_model_train_graphs.png" width="700"/>  
     These are the graphs of various metrics obtained while training the Meta model inside the ensemble model. The training logs of the Model 2 (Deep Neural Network) and Meta Model can be found in the project files and could be viewed using `tensorboard`.
 
 ## **Results**  
