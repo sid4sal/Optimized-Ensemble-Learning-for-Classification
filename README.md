@@ -103,17 +103,17 @@ Our final solution is an ensemble of two models with a meta-model on top. This s
 - **Comparing models**  
     The comparison of performance of different models on the Test Dataset:  
     <img src="https://drive.google.com/thumbnail?id=1dXPuXIEqDakgT0AgGQf1N8lW4oFMfxhS&sz=w2497" alt="model_compare.png" width="800"/>  
-    The table shows that the ensemble model is the best performing one considering all the metrics used.
+    The table shows that the ensemble model is the best performing one considering all the metrics used. The Ensemble Model outperforms the commonly used basic neural networks and classical ML models, it also outperforms more sophisticated Deep Learning techniques/models.
 
 - **Ensemble Model Performance**  
     The results of `Ensemble Model` (our best-performing model):  
     - **Performance of Ensemble model on the Train vs Test Datasets**  
         <img src="https://drive.google.com/thumbnail?id=1hU4sztYClTHbAKVKxE3jMb5BLrSO7rYb&sz=w2004" alt="ensemble_model_train_test_results.png" width="350"/>  
-        This shows that model is not overfitting.
+        The results shows that there is only minor difference between the train and test dataset performance, hence the model is not overfitting.
 
     - **Performance of Component Models inside the Ensemble model** on the Test Dataset  
         <img src="https://drive.google.com/thumbnail?id=12BC8I9wlZQeIbw4uzqeFPaDmhtEKyld5&sz=w2287" alt="ensemble_model_results.png" width="400"/>  
-        Both Model 1 and Model 2 has low performance, but combined model has a high performance.  
+        The above table shows the performances (on the test dataset) of the individual Model 1 and Model 2 and the combined Meta Model performance which is the overall performance of the Ensemble model. Both Model 1 and Model 2 has low performance, but combined final model has a high performance.  
 
     - **Final Performance Report of Ensemble Model** on the Test Dataset  
         <img src="https://drive.google.com/thumbnail?id=16Y17BiD0nkOjtEbWr4yJbFV3qbye3DIV&sz=w2374" alt="ensemble_model_report.png" width="400"/>  
