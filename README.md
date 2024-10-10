@@ -3,7 +3,8 @@
 **Team-ID = GSTN_715**
 
 ## **Overview**  
-This project is based on the binary classification of GST data. The task was to develop AI/ML models to predict the target class using machine learning and deep learning techniques. We implemented an Ensemble Model using multiple classifiers to enhance performance on the given datasets.
+This project's objective was to use AI/ML approaches to classify a dataset. We started with detailed analysis of the dataset to find key patterns, anomalies, and connections. Next, we designed an optimized preprocessing workflow to deal with missing values, handle imbalances, and create features. Various models were tested, from classical machine learning algorithms to advanced deep learning techniques such as Deep Metric Learning (DML) and autoencoders.  
+After testing the performance of multiple models, we finalized an optimized ensemble model, which combined the strengths of multiple approaches/models. This model achieved the best results, it outperformed both basic models and sophisticated deep learning techniques, making it the most suitable for the classification of GST data.
 
 ### **Table of Contents**  
 1. [Approach](#approach)
