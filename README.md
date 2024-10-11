@@ -129,7 +129,7 @@ Following are some of the ways which could improve the model in future:
 ## **Code Documentation and Manual**
 
 ### **Environment Setup**  
-The project utilizes **Conda** for managing dependencies, because of the ease and flexibility. You can use any other environment manager, but install the proper versions of the required libraries.  
+The project utilizes **Conda** for managing dependencies, because of the ease and flexibility. Any other environment manager can be used, but proper versions of the required libraries specified in the `environment.yml` file must be installed.  
 We used the `linux` (Ubuntu) operating system for our development and testing, but this code is usable on windows also.
 
 Follow the steps below to set up your environment:  
