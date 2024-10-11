@@ -137,6 +137,7 @@ Follow the steps below to set up your environment:
 2. Navigate to the project folder and run:  
    ```bash  
    conda env create -n your_env_name -f environment.yml  
+   # Replace your_env_name with your desired environment name.
    ```  
 3. Activate the environment:
     ```bash  
