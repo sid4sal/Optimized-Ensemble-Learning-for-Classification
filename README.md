@@ -130,6 +130,7 @@ Following are some of the ways which could improve the model in future:
 
 ### **Environment Setup**  
 The project utilizes **Conda** for managing dependencies, because of the ease and flexibility. You can use any other environment manager, but install the proper versions of the required libraries.  
+We used the `linux` (Ubuntu) operating system for our development and testing, but this code is usable on windows also.
 
 Follow the steps below to set up your environment:  
 1. Install **Miniconda**: Follow instructions [on the official page here](https://docs.anaconda.com/miniconda/miniconda-install/).  
